@@ -8,6 +8,11 @@ import ResetPassword from './Pages/ResetPassword'
 import Otp from './Pages/Otp'
 import Search from './Pages/Search'
 import Profile from './Pages/Profile'
+import VerificationPage from './Pages/VerificationPage'
+import PrivateRoute from './Components/PrivateRoute'
+
+
+
 const App = () => {
   return (
     <BrowserRouter >
@@ -16,11 +21,32 @@ const App = () => {
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<SingUp/>}/>
-        <Route path='/editor/:roomId' element={<CodeEditor/>}/>
-        <Route path='/profile' element={<Profile/>} />
         <Route path='/reset_password' element={<ResetPassword/>}/>
+        <Route path='/verify-email/:token' element={<VerificationPage/>} />
         <Route path='/otp' element={<Otp/>}/>
-        <Route path='/search' element={<Search/>}/>
+        <Route 
+          path='/search'
+
+          element={
+            <PrivateRoute>
+              <Search/>
+            </PrivateRoute>
+          }
+        />
+        <Route 
+          path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>}
+        />
+        <Route
+          path='/editor/:roomId'
+          element={
+            <PrivateRoute>
+              <CodeEditor/>
+            </PrivateRoute>
+          }
+        />
+        {/* <PrivateRoute path='/profile' element={<Profile/>}/> */}
+        {/* <PrivateRoute path='/search'  element={<Search/>}/> */}
+        {/* <PrivateRoute  path='/editor/:roomId' element={<CodeEditor/>}/> */}
       </Routes>
 
     </BrowserRouter>
