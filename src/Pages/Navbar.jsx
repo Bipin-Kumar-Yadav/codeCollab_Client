@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { BiSearchAlt } from "react-icons/bi";
 import { useNavigate } from "react-router-dom";
 import { ImCross } from "react-icons/im";
 import axiosInstance from "../Utils/axiosConfig";
@@ -47,14 +46,6 @@ const Navbar = () => {
             Room
           </button>
 
-          <button
-            className=" text-secondary font-bold text-[30px]"
-            onClick={() => {
-              navigate("/search");
-            }}
-          >
-            <BiSearchAlt />
-          </button>
         </div>
 
         <div

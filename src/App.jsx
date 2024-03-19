@@ -6,10 +6,11 @@ import Navbar from './Pages/Navbar'
 import CodeEditor from './Pages/CodeEditor'
 import ResetPassword from './Pages/ResetPassword'
 import Otp from './Pages/Otp'
-import Search from './Pages/Search'
 import Profile from './Pages/Profile'
 import VerificationPage from './Pages/VerificationPage'
 import PrivateRoute from './Components/PrivateRoute'
+import Community from './Pages/Community'
+import CommunityChat from './Pages/CommunityChat'
 
 
 
@@ -24,15 +25,7 @@ const App = () => {
         <Route path='/reset_password' element={<ResetPassword/>}/>
         <Route path='/verify-email/:token' element={<VerificationPage/>} />
         <Route path='/otp' element={<Otp/>}/>
-        <Route 
-          path='/search'
 
-          element={
-            <PrivateRoute>
-              <Search/>
-            </PrivateRoute>
-          }
-        />
         <Route 
           path='/profile' element={<PrivateRoute><Profile/></PrivateRoute>}
         />
@@ -44,6 +37,23 @@ const App = () => {
             </PrivateRoute>
           }
         />
+        <Route 
+          path='/community'
+          
+          element={
+            <PrivateRoute>
+              <Community/>
+            </PrivateRoute>
+          }
+          />
+          <Route
+            path='/community/:communityId'
+            element={
+              <PrivateRoute>
+                <CommunityChat/>
+              </PrivateRoute>
+            }
+          />
         {/* <PrivateRoute path='/profile' element={<Profile/>}/> */}
         {/* <PrivateRoute path='/search'  element={<Search/>}/> */}
         {/* <PrivateRoute  path='/editor/:roomId' element={<CodeEditor/>}/> */}
